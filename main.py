@@ -1,5 +1,5 @@
 from tabulate import tabulate
-from datas import Cadastro_dia
+
 #   CRIANDO O MENU DE INTERAÇÃO COM O USUÁRIO
 table = [
 

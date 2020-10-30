@@ -21,14 +21,19 @@ if opcao == 1:
 
     # colocando dados em um arquivo .csv
 
-    with open("tarefas.csv", "a") as arquivo_csv:
-        escreva = csv.writer(arquivo_csv, delimiter = ',' , lineterminator = "\n")
+    with open("tarefas.csv", "w", newline='') as arquivo_csv:
+        colunas = ['identificação', 'descrição', 'Dia da semana', 'Local', 'Status']
 
-        escreva.writerow([identificacao])
-        escreva.writerow([descricao])
-        escreva.writerow([dia_semana])
-        escreva.writerow([local])
-        escreva.writerow([status])
+        escreva = csv.DictWriter(arquivo_csv, fieldnames=colunas, delimiter=',', lineterminator='\n')
+
+        escreva.writeheader()
+
+        escreva.writerow({'identificação': identificacao,'descrição': descricao,
+                         'Dia da semana': dia_semana, 'Local': local, 'Status':status})
+
+
+
+
 
 
 
