@@ -1,9 +1,11 @@
+from tabulate import tabulate
+from datas import Cadastro_dia
+#   CRIANDO O MENU DE INTERAÇÃO COM O USUÁRIO
+table = [
 
-class Sistema_tarefas():
+    ['1 ' 'Adicionar nova tarefa'],
+    ['2 ' 'Pesquisar tarefas'],
+    ['3 ' 'Mostrar tarefas cadastradas']
 
-    def __init__(self, descricao, data, local, status):
-        self.descricao = descricao
-        self.data = data
-        self.local = local
-        self.status = status
-
+]
+print(tabulate(table))

@@ -1,26 +1,33 @@
+# RECEBENDO A ENTRADA DO USUÁRIO E ARMAZENANDO NO DICIONARIO.
 from tabulate import tabulate
-from datas import Cadastro_dia
-#   CRIANDO O MENU DE INTERAÇÃO COM O USUÁRIO
-table = [
+from tarefas import Tarefas
 
-    ['1 ' 'Adicionar nova tarefa'],
-    ['2 ' 'Pesquisar tarefas'],
-    ['3 ' 'Mostrar tarefas cadastradas']
-
-]
+table = [["Adicionar Nova Tarefa: ", "1"],
+         ["Realizar Pesquisa: ", "2"],
+         ["Ver tarefas cadastradas no Sistema: ", "3"]]
 print(tabulate(table))
 
-
-# RECEBENDO A ENTRADA DO USUÁRIO
-
-opcao = int(input('Digite a opção correspondente a operação que deseja realizar: '))
+opcao = int(input('Digite a opção desejada: '))
 
 if opcao == 1:
-    print('Adicionar nova tarefa. ')
-    tarefa = []
-    descrever = input('Descrição da tarefa: ')
-    tarefa.append(descrever)
-    dia = int(input('Digite o dia: '))
-    mes = int(input('Digite o mês: '))
-    ano = int(input('Digite o ano: '))
-    Cadastro_dia(dia, mes, ano)
+    confirma = print('Adicionar Nova tarefa.')
+    identificacao = int(input('Digite a identificação numerica da tarefa: '))
+    descricao = input('Descrição da tarefa: ')
+    dia_semana = input('Dia da semana: ')
+    local = input('Local da tarefa: ')
+    status = input('Status da tarefa: ')
+    tarefas = Tarefas(identificacao, descricao, dia_semana, local, status)
+
+    # colocando dados em um arquivo .txt
+    arquivo = open("tarefas.txt","a")
+    dados = list()
+    dados.append(str(identificacao ))
+    dados.append(str(descricao ))
+    dados.append(str(dia_semana ))
+    dados.append(str(local ))
+    dados.append(str(status ))
+    arquivo.writelines(dados )
+
+    arquivo = open("tarefas.txt","r")
+    print(arquivo.readlines())
+
