@@ -20,5 +20,5 @@ class Tarefas:
 
 
 
-arquivo = open("tarefas.txt", "a")
+arquivo = open("tarefas.csv", "a")
 

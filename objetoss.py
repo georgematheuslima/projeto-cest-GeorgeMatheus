@@ -1,6 +1,7 @@
 # RECEBENDO A ENTRADA DO USUÁRIO E ARMAZENANDO NO DICIONARIO.
 from tabulate import tabulate
 from tarefas import Tarefas
+import csv
 
 table = [["Adicionar Nova Tarefa: ", "1"],
          ["Realizar Pesquisa: ", "2"],
@@ -18,16 +19,20 @@ if opcao == 1:
     status = input('Status da tarefa: ')
     tarefas = Tarefas(identificacao, descricao, dia_semana, local, status)
 
-    # colocando dados em um arquivo .txt
-    arquivo = open("tarefas.txt","a")
-    dados = list()
-    dados.append(str(identificacao ))
-    dados.append(str(descricao ))
-    dados.append(str(dia_semana ))
-    dados.append(str(local ))
-    dados.append(str(status ))
-    arquivo.writelines(dados )
+    # colocando dados em um arquivo .csv
 
-    arquivo = open("tarefas.txt","r")
-    print(arquivo.readlines())
+    with open("tarefas.csv", "a") as arquivo_csv:
+        escreva = csv.writer(arquivo_csv, delimiter = ',' , lineterminator = "\n")
+
+        escreva.writerow([identificacao])
+        escreva.writerow([descricao])
+        escreva.writerow([dia_semana])
+        escreva.writerow([local])
+        escreva.writerow([status])
+
+
+
+
+
+
 
