@@ -1,9 +1,10 @@
 # RECEBENDO A ENTRADA DO USUÁRIO E ARMAZENANDO NO DICIONARIO.
 from tabulate import tabulate
 from tarefas import Tarefas
-import pandas as pd
 from datas import Data
 from random import randint
+import pandas as pd
+
 
 table = [["Adicionar Nova Tarefa: ", "1"],
          ["Realizar Pesquisa: ", "2"],
@@ -42,15 +43,40 @@ if opcao == 1:
     # colocando dados em um arquivo .csv
     arquivo_csv = Tarefas.adicionando_csv(tarefas)
 
+    operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
+    if operacao.upper() == 'SIM':
+        print(opcao)
+    else:
+        print('Obrigado por utilizar o sistema.')
 
 
 elif opcao == 2:
-    print('Realizar pesquisa.')
+    print('Realizar pesquisa.\n')
     tipo_pesquisa = int(input('Digite [1] para pesquisar por Status,'
                               ' ou [2] para pesquisar por identificação. '))
+
+
+   # PESQUISA POR STATUS DA TAREFA
     if tipo_pesquisa == 1:
         pesquisar = pd.read_csv("tarefas.csv")
         print(pesquisar['Status'])
+
+        # Alterar algum dado da lista
+        alteracao = input('Deseja alterar alguma Tarefa?:' )
+        if alteracao.upper() == 'SIM':
+            print(pesquisar['identificação'])
+            indice = int(input('Digite o número de identificação da Tarefa: '))
+        else:
+            pass
+
+    # PESQUISA POR IDENTIFICAÇÃO NUMÉRICA DA TAREFA.
     elif tipo_pesquisa == 2:
         pesquisar = pd.read_csv("tarefas.csv")
-        print(pesquisar['identificação.'])
+        print(pesquisar['identificação'])
+
+
+elif opcao == 3:
+    pesquisa = pd.read_csv("tarefas.csv")
+    print(pesquisa.head())
+else:
+    print('Operação não cadastrada')
