@@ -1,7 +1,7 @@
 # RECEBENDO A ENTRADA DO USUÁRIO E ARMAZENANDO NO DICIONARIO.
 from tabulate import tabulate
 from tarefas import Tarefas
-import csv
+import pandas as pd
 
 table = [["Adicionar Nova Tarefa: ", "1"],
          ["Realizar Pesquisa: ", "2"],
@@ -21,23 +21,5 @@ if opcao == 1:
 
     # colocando dados em um arquivo .csv
 
-    with open("tarefas.csv", "w", newline='') as arquivo_csv:
-        colunas = ['identificação', 'descrição', 'Dia da semana', 'Local', 'Status']
-
-        escreva = csv.DictWriter(arquivo_csv, fieldnames=colunas, delimiter=',', lineterminator='\n')
-
-        escreva.writeheader()
-
-        escreva.writerow({'identificação': identificacao,'descrição': descricao,
-                         'Dia da semana': dia_semana, 'Local': local, 'Status':status})
-
-
-
-
-
-
-
-
-
-
-
+    arquivo_csv = Tarefas.adicionando_csv(tarefas)
+    print(pd.read_csv("tarefas.csv"))
