@@ -1,27 +1,39 @@
-from datetime import date
-def Cadastro_dia(day, month, year):
-    DIAS = [
-        'Segunda-feira',
-        'Terça-feira',
-        'Quarta-feira',
-        'Quinta-Feira',
-        'Sexta-feira',
-        'Sábado',
-        'Domingo'
-    ]
+from datetime import date, datetime
 
 
-    # aplicando as datas no método date
-    data = date(year=year, month=month, day=day)
+class Data:
 
-    #convertendo ao método brasileiro
-    padrao_brasil = data.strftime('%d/%m/%Y')
-    print(padrao_brasil)
+    def __init__(self, dia, mes, ano):
+        self.dia = dia
+        self.mes = mes
+        self.ano = ano
 
-    # apresentando o dia da semana.
-    indice_da_semana = data.weekday()
+    @staticmethod
+    def dia_atual():
+        now = datetime.now()
+        dia_formatado = f'{now.day}/{now.month}/{now.year}'
+        return dia_formatado
 
-    # printando o dia da semana.
-    dia_da_semana = DIAS[indice_da_semana]
-    print(dia_da_semana)
 
+    def executar_tarefa(dia, mes, ano):
+        DIAS = [
+            'Segunda-feira',
+            'Terça-feira',
+            'Quarta-feira',
+            'Quinta-Feira',
+            'Sexta-feira',
+            'Sábado',
+            'Domingo'
+        ]
+
+        data = date(day= dia, month=mes, year=ano)
+        data_formatada = ('{}/{}/{}'.format(dia, mes, ano))
+        print(data_formatada)
+
+        indice_da_semana = data.weekday()
+
+
+        dia_da_semana = DIAS[indice_da_semana]
+        print(dia_da_semana)
+
+        return data_formatada

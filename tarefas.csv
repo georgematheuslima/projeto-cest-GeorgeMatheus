@@ -1,2 +1,4 @@
-identificação,descrição,Dia da semana,Local,Status
-123,estudar para prova de cálculo,quinta-feira,casa,pendente
+
+identificação,descrição,Dia do cadastro,Dia da execução,Local,Status
+22,estudar flask,3/11/2020,23/11/2020,casa,pendente
+53,correr na praia,3/11/2020,3/11/2020,litorânea,pendente
