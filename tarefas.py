@@ -23,6 +23,9 @@ class Tarefas:
         return informacoes
 
 
+
+
+
     def adicionando_csv(self):
         colunas = ['identificação', 'descrição', 'Dia do cadastro','Dia da execução' , 'Local', 'Status']
 
@@ -34,16 +37,15 @@ class Tarefas:
                                'Local':self.local_tarefa, 'Status': self.status_tarefa})
 
     @staticmethod
-    def consulta_status():
+    def altera_status():
         pesquisar = pd.read_csv("tarefas.csv")
         apresentar_colunas = pd.DataFrame(data=pesquisar, columns=['Descrição', 'Status'])
-        return str(apresentar_colunas)
-
-    def altera_status(self):
-        colunas = Tarefas.consulta_status()
-        if colunas.upper() == 'PENDENTE':
+        colunas =  str(apresentar_colunas)
+        alterar_colunas = colunas
+        if alterar_colunas.upper() == 'PENDENTE':
             return 'Realizado'
-        elif colunas.upper() == 'REALIZADO':
+        elif alterar_colunas.upper() == 'REALIZADO':
             return "Pendente"
+
 
 

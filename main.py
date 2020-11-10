@@ -3,7 +3,6 @@ from tabulate import tabulate
 from tarefas import Tarefas
 from datas import Data
 from random import randint
-from pesquisas import Pesquisa
 import pandas as pd
 
 def menu_opcoes():
@@ -36,16 +35,22 @@ if opcao_menu == 1:
     local = input('Local da tarefa: ')
 
     # status da tarefa
-    opcao = int(input('Status da tarefa:\n [1] Pendente \n [2] Realizado:   '))
-    if opcao == 1:
-        status = "Pendente"
-    elif opcao == 2:
-        status = "Realizado"
-    else:
-        raise ValueError ('Operação inválida')
+    status_tarefa = int(input('Status da tarefa:\n [1] Pendente \n [2] Realizado:   '))
+    def status_inicial_tarefa(n):
+        if status_tarefa == 1:
+            status = "Pendente"
+            return status
+        elif status_tarefa == 2:
+            status = "Realizado"
+            return status
+        else:
+            raise ValueError ('Operação inválida')
+
+    coluna_status = status_inicial_tarefa(status_tarefa)
+
 
     # Envia todos os inputs para o Objeto Tarefas.
-    tarefas = Tarefas(identificacao, descricao, dia_cadastro, dia_execucao, local, status)
+    tarefas = Tarefas(identificacao, descricao, dia_cadastro, dia_execucao, local, coluna_status)
 
     # colocando dados em um arquivo .csv
     arquivo_csv = Tarefas.adicionando_csv(tarefas)
@@ -72,7 +77,10 @@ elif opcao_menu == 2:
         # Alterar o Status de alguma Tarefa:
         altera_status = input('Deseja alterar o status de alguma tarefa(SIM/NÃO): ')
         if altera_status.upper() == 'SIM':
-            Tarefas.consulta_status()
+            indice_tarefa = int(input('Digite o índice ao lado da tarefa: '))
+            linha = apresentar_colunas.loc[indice_tarefa] # seleciona a linha do arquivo csv escolhido pelo usuário
+            #status_tarefa =
+            print(linha)
 
 
         # Alterar algum dado da lista
