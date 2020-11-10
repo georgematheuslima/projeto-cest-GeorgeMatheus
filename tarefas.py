@@ -1,5 +1,8 @@
 from datas import Data
 import csv
+import pandas as pd
+
+
 
 class Tarefas:
 
@@ -30,5 +33,17 @@ class Tarefas:
                                'Dia do cadastro': Data.dia_atual(),'Dia da execução': self.executar,
                                'Local':self.local_tarefa, 'Status': self.status_tarefa})
 
+    @staticmethod
+    def consulta_status():
+        pesquisar = pd.read_csv("tarefas.csv")
+        apresentar_colunas = pd.DataFrame(data=pesquisar, columns=['Descrição', 'Status'])
+        return str(apresentar_colunas)
+
+    def altera_status(self):
+        colunas = Tarefas.consulta_status()
+        if colunas.upper() == 'PENDENTE':
+            return 'Realizado'
+        elif colunas.upper() == 'REALIZADO':
+            return "Pendente"
 
 
