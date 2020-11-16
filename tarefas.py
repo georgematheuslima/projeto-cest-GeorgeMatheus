@@ -3,7 +3,6 @@ import csv
 import pandas as pd
 
 
-
 class Tarefas:
 
     def __init__(self, identificacao, descricao, dia_semana, executar, local_tarefa, status_tarefa):
@@ -15,37 +14,26 @@ class Tarefas:
         self.status_tarefa = status_tarefa
 
     def recebe_informacoes(self):
-        informacoes = {"Identificação: ":self.identificacao,
-                       "Descrição: ":self.descricao,
-                       "Dia da semana: ":self.dia_semana,
-                       "Local da Tarefa: ":self.local_tarefa,
-                       "Status: ":self.status_tarefa}
+        informacoes = {"Identificação: ": self.identificacao,
+                       "Descrição: ": self.descricao,
+                       "Dia da semana: ": self.dia_semana,
+                       "Local da Tarefa: ": self.local_tarefa,
+                       "Status: ": self.status_tarefa}
         return informacoes
 
-
-
-
-
     def adicionando_csv(self):
-        colunas = ['identificação', 'descrição', 'Dia do cadastro','Dia da execução' , 'Local', 'Status']
+        colunas = ['Identificação', 'Descrição', 'Dia do cadastro', 'Dia da execução', 'Local', 'Status']
 
         with open("tarefas.csv", "a", newline='') as arquivo_csv:
             escrever = csv.DictWriter(arquivo_csv, fieldnames=colunas, delimiter=',', lineterminator='\n')
 
-            escrever.writerow({'identificação': self.identificacao, 'descrição':self.descricao,
-                               'Dia do cadastro': Data.dia_atual(),'Dia da execução': self.executar,
-                               'Local':self.local_tarefa, 'Status': self.status_tarefa})
+            escrever.writerow({'Identificação': self.identificacao, 'Descrição': self.descricao,
+                               'Dia do cadastro': Data.dia_atual(), 'Dia da execução': self.executar,
+                               'Local': self.local_tarefa, 'Status': self.status_tarefa})
 
-    @staticmethod
-    def altera_status():
-        pesquisar = pd.read_csv("tarefas.csv")
-        apresentar_colunas = pd.DataFrame(data=pesquisar, columns=['Descrição', 'Status'])
-        colunas =  str(apresentar_colunas)
-        alterar_colunas = colunas
-        if alterar_colunas.upper() == 'PENDENTE':
-            return 'Realizado'
-        elif alterar_colunas.upper() == 'REALIZADO':
-            return "Pendente"
 
 
 
+    @staticmethod
+    def encerrar_sistema():
+       print('Obrigado por utilizar o sistema.')

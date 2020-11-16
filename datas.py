@@ -14,7 +14,6 @@ class Data:
         dia_formatado = f'{now.day}/{now.month}/{now.year}'
         return dia_formatado
 
-
     def executar_tarefa(dia, mes, ano):
         DIAS = [
             'Segunda-feira',
@@ -26,14 +25,14 @@ class Data:
             'Domingo'
         ]
 
-        data = date(day= dia, month=mes, year=ano)
+        data = date(day=dia, month=mes, year=ano)
         data_formatada = ('{}/{}/{}'.format(dia, mes, ano))
         print(data_formatada)
 
         indice_da_semana = data.weekday()
 
-
         dia_da_semana = DIAS[indice_da_semana]
         print(dia_da_semana)
 
         return data_formatada
+
