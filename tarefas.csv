@@ -1,14 +1,13 @@
 identificação,Descrição,Dia do cadastro,Dia da execução,Local,Status
-22,estudar flask,3/11/2020,23/11/2020,casa,pendente
-53,correr na praia,3/11/2020,3/11/2020,litorânea,pendente
-48,terminar curso de mysql,3/11/2020,25/11/2020,casa,pendente
-96,fazer atividade de metodologia,3/11/2020,3/11/2020,casa,pendente
-22,correr,3/11/2020,12/11/2020,reserva do rangedor,realizada
-11,ler livro,6/11/2020,7/11/2020,casa,pendente
-27,baixar cd novo Tierry,7/11/2020,13/11/2020,casa,pendente
-98,começar a desenvolver o front do sistema,7/11/2020,8/11/2020,casa,pendente
+22,estudar flask,3/11/2020,23/11/2020,casa,Pendente
+53,correr na praia,3/11/2020,3/11/2020,litorânea,Pendente
+48,terminar curso de mysql,3/11/2020,25/11/2020,casa,Pendente
+96,fazer atividade de metodologia,3/11/2020,3/11/2020,casa,Pendente
+22,correr,3/11/2020,12/11/2020,reserva do rangedor,Realizado
+11,ler livro,6/11/2020,7/11/2020,casa,Pendente
+27,baixar cd novo Tierry,7/11/2020,13/11/2020,casa,Pendente
+98,começar a desenvolver o front do sistema,7/11/2020,8/11/2020,casa,Pendente
 26,correr,7/11/2020,8/11/2020,rua,Pendente
-68,Ritmo do encaixa,7/11/2020,8/11/2020,casa,Realizado
 94,terminar o sistema,7/11/2020,7/11/2020,casa,Pendente
 77,teste,7/11/2020,11/11/2020,casa,Pendente
 44,usar colírio,7/11/2020,9/11/2020,trabalho,Pendente
@@ -24,3 +23,4 @@ identificação,Descrição,Dia do cadastro,Dia da execução,Local,Status
 4,dormir,15/11/2020,15/11/2020,casa,Pendente
 42,ajudar papai nas provas,15/11/2020,15/11/2020,casa,Pendente
 40,estudar derivadas,15/11/2020,16/11/2020,cest,Pendente
+45,terminar o sistema,17/11/2020,23/11/2020,casa,Pendente
