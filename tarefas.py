@@ -1,6 +1,6 @@
 from datas import Data
 import csv
-import pandas as pd
+from tabulate import tabulate
 
 
 class Tarefas:
@@ -31,9 +31,21 @@ class Tarefas:
                                'Dia do cadastro': Data.dia_atual(), 'Dia da execução': self.executar,
                                'Local': self.local_tarefa, 'Status': self.status_tarefa})
 
+    @staticmethod
+    def menu_opcoes():
+        table = [["Adicionar Nova Tarefa: ", "1"],
+                 ["Realizar Pesquisa: ", "2"],
+                 ["Ver tarefas cadastradas no Sistema: ", "3"]]
+        print(tabulate(table))
 
-
-
+    def nova_operacao(self):
+        nova_operacao = input(self)
+        if nova_operacao.upper() == 'SIM':
+            return self.menu_opcoes()
+        elif nova_operacao.upper() == 'NÃO':
+            Tarefas.encerrar_sistema()
+        else:
+            raise ValueError ('Opção inválida')
     @staticmethod
     def encerrar_sistema():
-       print('Obrigado por utilizar o sistema.')
+        print('Obrigado por utilizar o sistema.')

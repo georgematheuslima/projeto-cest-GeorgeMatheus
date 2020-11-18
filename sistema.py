@@ -6,11 +6,7 @@ from random import randint
 import pandas as pd
 
 
-def menu_opcoes():
-    table = [["Adicionar Nova Tarefa: ", "1"],
-             ["Realizar Pesquisa: ", "2"],
-             ["Ver tarefas cadastradas no Sistema: ", "3"]]
-    print(tabulate(table))
+Tarefas.menu_opcoes()
 
 def opcoes():
     opcao_menu = int(input('Digite a opção desejada: '))
@@ -27,7 +23,7 @@ def opcoes():
         dia = int(input('Digite o dia da execução: '))
         mes = int(input('Digite o mês: '))
         ano = int(input('Digite o Ano: '))
-        dia_da_execucao = Data.executar_tarefa(dia, mes, ano)
+        data_da_execucao = Data.executar_tarefa(dia, mes, ano)
 
         # Local de execução da tarefa
         local_da_tarefa = input('Local da tarefa: ')
@@ -49,17 +45,13 @@ def opcoes():
 
         # Envia todos os inputs para o Objeto Tarefas.
         inserindo_tarefas_arquivocsv = Tarefas(identificacao_numerica_aletoria, descricao_da_tarefa, dia_do_cadastro,
-                                               dia_da_execucao, local_da_tarefa, coluna_do_status)
+                                               data_da_execucao, local_da_tarefa, coluna_do_status)
 
         # colocando dados em um arquivo .csv
         arquivo_csv = Tarefas.adicionando_csv(inserindo_tarefas_arquivocsv)
 
         nova_operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
-        if nova_operacao.upper() == 'SIM':
-            menu_opcoes()
-            opcoes()
-        else:
-            Tarefas.encerrar_sistema()
+        Tarefas.nova_operacao(nova_operacao)
 
 
     elif opcao_menu == 2:
@@ -76,17 +68,14 @@ def opcoes():
             indice_tarefa = int(input('Digite o índice ao lado da tarefa: '))
             #linha = apresentar_colunas.loc[indice_tarefa]  # seleciona a linha do arquivo csv escolhido pelo usuário
             # status_tarefa =
-            #print(linha)
 
-        # Alterar algum dado da lista
-        alteracao = input('Deseja alterar alguma Tarefa?:')
-        if alteracao.upper() == 'SIM':
-            print(pesquisar_tarefas['identificação'])
-            indice = int(input('Digite o número de identificação da Tarefa: '))
+            #print(linha)
+        elif altera_status.upper() == 'NÃO':
+            Tarefas.encerrar_sistema()
 
         else:
-            pass
-
+            print('Opção inválida.')
+            Tarefas.encerrar_sistema()
 
     elif opcao_menu == 3:
         apresenta_tabela = pd.read_csv("tarefas.csv")
@@ -97,6 +86,4 @@ def opcoes():
     else:
         print('Operação não cadastrada')
 
-
-menu_opcoes()
 opcoes()
