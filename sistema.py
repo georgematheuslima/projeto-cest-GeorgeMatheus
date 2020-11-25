@@ -1,9 +1,6 @@
-from tabulate import tabulate
 from tarefas import Tarefas
 from datas import Data
-from pesquisas import Pesquisa
 from random import randint
-import pandas as pd
 
 
 Tarefas.menu_opcoes()
@@ -20,9 +17,9 @@ def opcoes():
 
         # Prazo de execução da tarefa
         print('Insira a data de Execução da tarefa de acordo com o for pedido.')
-        dia = int(input('Digite o dia da execução: '))
-        mes = int(input('Digite o mês: '))
-        ano = int(input('Digite o Ano: '))
+        dia = int(input('Digite o dia da execução (Número): '))
+        mes = int(input('Digite o mês da execução (Número): '))
+        ano = int(input('Digite o Ano da execução (Número): '))
         data_da_execucao = Data.executar_tarefa(dia, mes, ano)
 
         # Local de execução da tarefa
@@ -52,38 +49,33 @@ def opcoes():
 
         nova_operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
         Tarefas.nova_operacao(nova_operacao)
-
+        opcoes()
 
     elif opcao_menu == 2:
         print('Realizar pesquisa.\n')
-        Pesquisa.apresentar_tarefas()
+        Tarefas.apresentar_tarefas()
 
         # PESQUISA POR STATUS DA TAREFA
         indice_da_pesquisa = int(input('Digite o Índice da tarefa que deseja verificar: '))
-        Pesquisa.pesquisa_tarefas(indice_da_pesquisa)
+        Tarefas.pesquisa_tarefas(indice_da_pesquisa)
 
-        # Alterar o Status de alguma Tarefa:
-        altera_status = input('Deseja alterar o status de alguma tarefa(SIM/NÃO): ')
-        if altera_status.upper() == 'SIM':
-            indice_tarefa = int(input('Digite o índice ao lado da tarefa: '))
-            #linha = apresentar_colunas.loc[indice_tarefa]  # seleciona a linha do arquivo csv escolhido pelo usuário
-            # status_tarefa =
+        nova_operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
+        Tarefas.nova_operacao(nova_operacao)
+        opcoes()
 
-            #print(linha)
-        elif altera_status.upper() == 'NÃO':
-            Tarefas.encerrar_sistema()
-
-        else:
-            print('Opção inválida.')
-            Tarefas.encerrar_sistema()
 
     elif opcao_menu == 3:
-        apresenta_tabela = pd.read_csv("tarefas.csv")
-        table_apresenta_tabela = pd.DataFrame(data=apresenta_tabela, columns=['identificação', 'Descrição', 'Local',
-                                                                              'Dia da execução', 'Status'])
+        Tarefas.apresenta_tarefas_cadastradas()
+        nova_operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
+        Tarefas.nova_operacao(nova_operacao)
+        opcoes()
 
-        print(tabulate(table_apresenta_tabela))
+
     else:
         print('Operação não cadastrada')
+        nova_operacao = input('Deseja realizar outra operação?(Sim / Não):  ')
+        Tarefas.nova_operacao(nova_operacao)
+        opcoes()
+
 
 opcoes()
